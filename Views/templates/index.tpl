@@ -12,7 +12,7 @@
     <nav>
         <ul>
             <li>
-                <a href "http://127.0.0.1:8080/index.php?page=Accueil&action=check"> Accueil </a>
+                <a href="http://127.0.0.1:8080/index.php?page=Accueil"> Accueil </a>
            </li>
             <li>
                 <a href="http://127.0.0.1:8080/index.php?page=categorie&action=list"> Categorie </a>

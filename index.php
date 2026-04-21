@@ -4,14 +4,32 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+spl_autoload_register(function ($class) {
+    $prefix = 'Smarty\\';
+    $base_dir = __DIR__ . '/libs/smarty/src/';
+
+    $len = strlen($prefix);
+    if (strncmp($prefix, $class, $len) !== 0) {
+        return;
+    }
+
+    $relative_class = substr($class, $len);
+    $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
+
+    if (file_exists($file)) {
+        require $file;
+    }
+});
+
+$smarty = new \Smarty\Smarty();
+
 //todo gérer le coeur de l'appli en POO
 //Chargement du moteur de template Smarty
-require_once('libs/smarty/Smarty.class.php');
-$smarty = new Smarty();
-$smarty->template_dir = 'Views/templates/';
-$smarty->compile_dir = 'Views/templates_c/';
-$smarty->config_dir = 'Views/configs/';
-$smarty->cache_dir = 'Views/cache/';
+
+$smarty->setTemplateDir('Views/templates/');
+$smarty->setCompileDir('Views/templates_c/');
+$smarty->setConfigDir('Views/configs/');
+$smarty->setCacheDir('Views/cache/');
 
 // Routeur (gestion des routes)
 $page = isset($_GET['page']) ? $_GET['page'] : 'Accueil';

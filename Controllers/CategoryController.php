@@ -34,13 +34,34 @@ class CategoryController {
             "description" => "Ajout des categories"
         ];
     }
-
+/*
     public function delete() {
         $id = filter_var(strip_tags(trim($_GET['idCategorie'])), FILTER_SANITIZE_NUMBER_INT);
         $this->_model->delete($id);
         header("location: index.php?page=categorie&action=list");
         exit;
     }
+*/
+
+public function delete() {
+    // Vérifier que idCategorie existe et est valide
+    if (!isset($_GET['idCategorie']) || empty($_GET['idCategorie'])) {
+        header("location: index.php?page=categorie&action=list");
+        exit;
+    }
+    
+    // Utiliser FILTER_VALIDATE_INT au lieu de FILTER_SANITIZE_NUMBER_INT
+    $id = filter_var($_GET['idCategorie'], FILTER_VALIDATE_INT);
+    
+    
+    if ($id !== false && $id > 0) {
+        $this->_model->delete($id);
+    }
+    
+    header("location: index.php?page=categorie&action=list");
+    exit;
+}
+
 
     public function insert() {
         if (isset($_POST['libelle'])) {
@@ -55,15 +76,22 @@ class CategoryController {
 
     public function update() {
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
-            return ["titre" => "Ajout des catégories",
-                "description" => "Ajout des categories",
-                "categorie" => $this->_model->selectById((int) $_GET['idCategorie'])
+            if (!isset($_GET['idCategorie']) || empty($_GET['idCategorie'])) {
+                header("location: index.php?page=categorie&action=list");
+                exit;
+            }
+            return [
+                "titre" => "Ajout des catégories",
+                "description" => "Ajout des catégories",
+                "categorie" => $this->_model->selectById((int)$_GET['idCategorie'])
             ];
-        } elseif($_SERVER['REQUEST_METHOD'] == "POST") {
-            $libelle = filter_var(strip_tags(trim($_POST['libelle'])), FILTER_SANITIZE_STRING);
-            $id = filter_var(strip_tags(trim($_POST['idCategorie'])), FILTER_SANITIZE_NUMBER_INT);
+        }
+        elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $libelle = trim($_POST['libelle']);
+            $id = filter_var(strip_tags(trim($_POST['idCategorie'])), FILTER_VALIDATE_INT);
             $this->_model->update($id, $libelle);
             header("location: index.php?page=categorie&action=list");
+            exit;
         }
     }
 

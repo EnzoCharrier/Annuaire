@@ -17,12 +17,12 @@ class CategoryModel extends Model {
     }
 
     /*
-      avant de factoriser mon code avec l'héritage
+      //avant de factoriser mon code avec l'héritage
       public function list(){
       $sql = "select * from ".$this->table;
       return $this->pdo->query($sql);
-      } */
-
+      } 
+    */
     public function insert(string $unLlibelle) {
         $sth = $this->_pdo->prepare("insert into " . $this->_table .
                 " (libelle) values(:libelle)");
@@ -32,13 +32,31 @@ class CategoryModel extends Model {
     }
 
     public function delete(int $unId) {
-        $sth = $this->_pdo->prepare("delete from " . $this->_table .
-                " where idCategorie = :id");
-        $sth->bindParam(':id', $unId, PDO::PARAM_INT);
-        //  $this->_pdo->debugDumpParams();
-        return $sth->execute();
+    // Forcer le cast
+    $unId = (int)$unId;
+    
+    if ($unId <= 0) {
+        return false;
     }
+    
+    // ✅ AJOUTER UN ESPACE AVANT "where"
+    $sth = $this->_pdo->prepare("DELETE FROM " . $this->_table . " WHERE idCategorie = :id");
+    $sth->bindParam(':id', $unId, PDO::PARAM_INT);
+    
+    return $sth->execute();
+}
 
+/*
+public function delete(int $unId) {
+    // Forcer le cast pour être sûr
+    $unId = (int)$unId;
+    
+    $sth = $this->_pdo->prepare("delete from " . $this->_table . 
+                                 " where idCategorie = :id");
+    $sth->bindParam(':id', $unId, PDO::PARAM_INT);
+    return $sth->execute();
+}
+    */
     /**
      * Mise a jour de la catégorie
      * @param int $unId
@@ -46,6 +64,8 @@ class CategoryModel extends Model {
      * @return int
      */
     public function update(int $unId, string $unLibelle) {
+        print_r($unId);
+        print_r($unLibelle);
         $sth = $this->_pdo->prepare("update " . $this->_table .
                 " SET libelle= :libelle where idCategorie = :id");
         $sth->bindParam(':id', $unId, PDO::PARAM_INT);
