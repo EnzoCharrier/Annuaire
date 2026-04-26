@@ -34,33 +34,19 @@ class CategoryController {
             "description" => "Ajout des categories"
         ];
     }
-/*
-    public function delete() {
-        $id = filter_var(strip_tags(trim($_GET['idCategorie'])), FILTER_SANITIZE_NUMBER_INT);
-        $this->_model->delete($id);
-        header("location: index.php?page=categorie&action=list");
-        exit;
-    }
-*/
 
-public function delete() {
-    // Vérifier que idCategorie existe et est valide
-    if (!isset($_GET['idCategorie']) || empty($_GET['idCategorie'])) {
+    public function delete() {
+        if (!isset($_GET['idCategorie']) || empty($_GET['idCategorie'])) {
+            header("location: index.php?page=categorie&action=list");
+            exit;
+        }
+        $id = filter_var($_GET['idCategorie'], FILTER_VALIDATE_INT);
+        if ($id !== false && $id > 0) {
+            $this->_model->delete($id);
+        }
         header("location: index.php?page=categorie&action=list");
         exit;
     }
-    
-    // Utiliser FILTER_VALIDATE_INT au lieu de FILTER_SANITIZE_NUMBER_INT
-    $id = filter_var($_GET['idCategorie'], FILTER_VALIDATE_INT);
-    
-    
-    if ($id !== false && $id > 0) {
-        $this->_model->delete($id);
-    }
-    
-    header("location: index.php?page=categorie&action=list");
-    exit;
-}
 
 
     public function insert() {

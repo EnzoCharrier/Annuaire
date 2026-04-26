@@ -32,31 +32,15 @@ class CategoryModel extends Model {
     }
 
     public function delete(int $unId) {
-    // Forcer le cast
-    $unId = (int)$unId;
-    
-    if ($unId <= 0) {
-        return false;
+        $unId = (int)$unId;
+        if ($unId <= 0) {
+            return false;
+        }
+        $sth = $this->_pdo->prepare("DELETE FROM " . $this->_table . " WHERE idCategorie = :id");
+        $sth->bindParam(':id', $unId, PDO::PARAM_INT);
+        return $sth->execute();
     }
-    
-    // ✅ AJOUTER UN ESPACE AVANT "where"
-    $sth = $this->_pdo->prepare("DELETE FROM " . $this->_table . " WHERE idCategorie = :id");
-    $sth->bindParam(':id', $unId, PDO::PARAM_INT);
-    
-    return $sth->execute();
-}
 
-/*
-public function delete(int $unId) {
-    // Forcer le cast pour être sûr
-    $unId = (int)$unId;
-    
-    $sth = $this->_pdo->prepare("delete from " . $this->_table . 
-                                 " where idCategorie = :id");
-    $sth->bindParam(':id', $unId, PDO::PARAM_INT);
-    return $sth->execute();
-}
-    */
     /**
      * Mise a jour de la catégorie
      * @param int $unId
