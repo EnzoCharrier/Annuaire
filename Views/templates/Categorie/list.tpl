@@ -1,13 +1,13 @@
 <nav>
         <ul>
             <li>
-                <a href="http://127.0.0.1:8080/index.php?page=site&action=list"> Mes Sites </a>
+                <a href="index.php?page=site&action=list"> Mes Sites </a>
            </li>
             <li>
-                <a href="http://127.0.0.1:8080/index.php?page=categorie&action=list">Mes Categorie </a>
+                <a href="index.php?page=categorie&action=list">Mes Categorie </a>
            </li>
            <li>
-                <a href="http://127.0.0.1:8080/index.php?">Deconnexion </a>
+                <a href="index.php?page=auth&action=logout">Deconnexion </a>
            </li>
         </ul>
     </nav>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.8.0, created on 2026-04-28 18:00:04
+/* Smarty version 5.8.0, created on 2026-04-28 18:59:21
   from 'file:site/list.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.8.0',
-  'unifunc' => 'content_69f0f5a4420fe1_50341437',
+  'unifunc' => 'content_69f103899e6ab7_44079782',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6f44346d4ef1cbf9fb371937cbc3591943a6c856' => 
     array (
       0 => 'site/list.tpl',
-      1 => 1777399178,
+      1 => 1777402673,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,18 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_69f0f5a4420fe1_50341437 (\Smarty\Template $_smarty_tpl) {
+function content_69f103899e6ab7_44079782 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\clara\\Documents\\Annuaire\\Views\\templates\\site';
 ?><nav>
         <ul>
             <li>
-                <a href="http://127.0.0.1:8080/index.php?page=site&action=list"> Mes Sites </a>
+                <a href="index.php?page=site&action=list"> Mes Sites </a>
            </li>
             <li>
-                <a href="http://127.0.0.1:8080/index.php?page=categorie&action=list">Mes Categorie </a>
+                <a href="index.php?page=categorie&action=list">Mes Categorie </a>
            </li>
            <li>
-                <a href="http://127.0.0.1:8080/index.php?">Deconnexion </a>
+                <a href="index.php?page=auth&action=logout">Deconnexion </a>
            </li>
         </ul>
     </nav>

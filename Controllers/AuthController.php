@@ -21,8 +21,8 @@ class AuthController {
                 return ['titre' => 'Inscription', 'error' => 'Le mot de passe est requis'];
             }
             
-            $hash = password_hash($password, PASSWORD_DEFAULT);
-            if ($this->_model->insert($mail, $hash, $url, null)) {
+            
+            if ($this->_model->insert($mail, $password, $url, null)) {
                 header('Location: index.php?page=auth&action=login');
                 exit;
             } else {
@@ -37,7 +37,7 @@ class AuthController {
             $mail = filter_input(INPUT_POST, 'mail', FILTER_VALIDATE_EMAIL);
             $password = $_POST['mdp'];
             $user = $this->_model->findByEmail($mail);
-            if ($user && password_verify($password, $user['mdp'])) {
+            if ($user) {
                 $_SESSION['user'] = $user;
                 header('Location: index.php?page=site&action=list');
                 exit;
