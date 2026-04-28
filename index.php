@@ -1,4 +1,30 @@
 <?php
+session_start();
+
+// Si pas connecté et pas sur login/register, rediriger
+if (empty($_SESSION['user'])) {
+    $page = $_GET['page'];
+    $action = $_GET['action'];
+    
+    // Pages autorisées sans authentification
+    $publicPages = ['auth', 'site'];
+    $publicActions = [
+        'auth' => ['login', 'register', 'logout'],
+        'site' => ['search']
+    ];
+    
+    $isPublic = false;
+    if (isset($publicPages) && in_array($page, $publicPages)) {
+        if (!isset($publicActions[$page]) || in_array($action, $publicActions[$page])) {
+            $isPublic = true;
+        }
+    }
+    
+    if (!$isPublic) {
+        header('Location: index.php?page=auth&action=login');
+        exit;
+    }
+}
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -31,14 +57,20 @@ $smarty->setCompileDir('Views/templates_c/');
 $smarty->setConfigDir('Views/configs/');
 $smarty->setCacheDir('Views/cache/');
 
+// Passer la session à Smarty pour utiliser dans les templates
+$smarty->assign('smarty', ['session' => $_SESSION]);
+
 // Routeur (gestion des routes)
-$page = isset($_GET['page']) ? $_GET['page'] : 'Accueil';
+$page = isset($_GET['page']) ? $_GET['page'] : 'auth';
 $pages = array('categorie' => 'CategoryController',
-    'analyse' => 'AnalyseController',
-    'Accueil' => 'HomeController',
-    '' => 'HomeController'
+               'analyse' => 'AnalyseController',
+               'Accueil' => 'HomeController',
+               '' => 'AuthController',
+               'auth' => 'AuthController',
+               'site' => 'SiteController'
+
 );
-$action = (isset($_GET['action'])) ? $_GET['action'] : 'list';
+$action = (isset($_GET['action'])) ? $_GET['action'] : 'login';
 /**
  * Exemple d'utilisation index.php?page=categorie&action=list
  */

@@ -1,3 +1,17 @@
+<nav>
+        <ul>
+            <li>
+                <a href="http://127.0.0.1:8080/index.php?page=site&action=list"> Mes Sites </a>
+           </li>
+            <li>
+                <a href="http://127.0.0.1:8080/index.php?page=categorie&action=list">Mes Categorie </a>
+           </li>
+           <li>
+                <a href="http://127.0.0.1:8080/index.php?">Deconnexion </a>
+           </li>
+        </ul>
+    </nav>
+
 <h2><a class="btn btn-primary" href="index.php?page=categorie&action=add">Ajouter</a></h2>
 <p>{$vue.description}<p>    
 <div>
