@@ -19,9 +19,9 @@ class SiteController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->_model->insert(
                 (int)$_SESSION['user']['idUser'],
-                trim($_POST['url']),
-                trim($_POST['titre']),
-                trim($_POST['descriptions']),
+                $_POST['url'],
+                $_POST['titre'],
+                $_POST['descriptions'],
                 (int)$_POST['idCategorie']
             );
             header('Location: index.php?page=site&action=list');
@@ -84,9 +84,9 @@ class SiteController {
             
             $this->_model->update(
                 $idSite,
-                trim($_POST['url']),
-                trim($_POST['titre']),
-                trim($_POST['descriptions']),
+                $_POST['url'],
+                $_POST['titre'],
+                $_POST['descriptions'],
                 (int)$_POST['idCategorie']
             );
             header('Location: index.php?page=site&action=list');
