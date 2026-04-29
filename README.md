@@ -85,9 +85,6 @@ $ php -S localhost:8080
 
 ## :memo: License ##
 
-This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
-
-
 Made by <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">EnzoCharrier</a>
 
 &#xa0;

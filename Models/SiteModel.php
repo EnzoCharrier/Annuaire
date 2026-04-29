@@ -22,9 +22,9 @@ class SiteModel extends Model {
 
     public function listByUser(int $idUser) {
         $sth = $this->_pdo->prepare(
-            "SELECT Site.*, c.libelle AS category_libelle 
+            "SELECT Site.*, Categorie.libelle AS category_libelle 
              FROM {$this->_table} Site
-             LEFT JOIN Categorie c ON Site.idCategorie = c.idCategorie
+             LEFT JOIN Categorie ON Site.idCategorie = Categorie.idCategorie
              WHERE Site.idUser = :idUser"
         );
         $sth->bindParam(':idUser', $idUser);
@@ -33,9 +33,9 @@ class SiteModel extends Model {
     }
 
     public function search(string $keyword = '', int $categoryId = 0) {
-        $sql = "SELECT Site.*, c.libelle AS category
+        $sql = "SELECT Site.*, Categorie.libelle AS category
                 FROM {$this->_table} Site
-                LEFT JOIN Categorie c ON Site.idCategorie = c.idCategorie
+                LEFT JOIN Categorie ON Site.idCategorie = Categorie.idCategorie
                 WHERE 1=1";
         $params = [];
         if ($keyword !== '') {

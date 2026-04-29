@@ -54,8 +54,7 @@ class CategoryModel extends Model {
                 " SET libelle= :libelle where idCategorie = :id");
         $sth->bindParam(':id', $unId, PDO::PARAM_INT);
         $sth->bindParam(':libelle', $unLibelle, PDO::PARAM_STR);
-        
-      // $sth->debugDumpParams();die;
+
         return $sth->execute();
     }
 

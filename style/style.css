@@ -79,13 +79,13 @@ select {
 }
 
 h1, h2, h3 {
-  color: var(--black);
+    color: #212121;
 }
 
 footer {
-  text-align: center;
-  padding: 18px 0;
-  background: var(--black);
-  color: var(--white);
-  margin-top: 30px;
+    text-align: center;
+    padding: 18px 0;
+    background: #212121;
+    color: #ffffff;
+    margin-top: 30px;
 }
