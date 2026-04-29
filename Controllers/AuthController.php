@@ -12,7 +12,7 @@ class AuthController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mail = filter_input(INPUT_POST, 'mail', FILTER_VALIDATE_EMAIL);
             $password = $_POST['mdp'];
-            $url = trim($_POST['url']);
+            $url = $_POST['url'];
             
             if (!$mail) {
                 return ['titre' => 'Inscription', 'error' => 'Email invalide'];

@@ -51,7 +51,7 @@ class CategoryController {
 
     public function insert() {
         if (isset($_POST['libelle'])) {
-            $libelle = filter_var(strip_tags(trim($_POST['libelle'])), FILTER_SANITIZE_STRING);
+            $libelle = filter_var($_POST['libelle'], FILTER_SANITIZE_STRING);
             $this->_model->insert($libelle);
             header("location: index.php?page=categorie&action=list");
             exit;
@@ -73,8 +73,8 @@ class CategoryController {
             ];
         }
         elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
-            $libelle = trim($_POST['libelle']);
-            $id = filter_var(strip_tags(trim($_POST['idCategorie'])), FILTER_VALIDATE_INT);
+            $libelle = $_POST['libelle'];
+            $id = filter_var($_POST['idCategorie'], FILTER_VALIDATE_INT);
             $this->_model->update($id, $libelle);
             header("location: index.php?page=categorie&action=list");
             exit;
