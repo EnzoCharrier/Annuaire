@@ -88,7 +88,7 @@ $ php -S localhost:8080
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
 
 
-Made with by <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">EnzoCharrier</a>
+Made by <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">EnzoCharrier</a>
 
 &#xa0;
 
