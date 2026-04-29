@@ -4,7 +4,7 @@
                 <a href="index.php?page=site&action=list"> Mes Sites </a>
            </li>
             <li>
-                <a href="index.php?page=categorie&action=list">Mes Categorie </a>
+                <a href="index.php?page=categorie&action=list">Mes Categories </a>
            </li>
            <li>
                 <a href="index.php?page=auth&action=logout">Deconnexion </a>

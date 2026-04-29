@@ -27,7 +27,7 @@ CREATE TABLE `Categorie` (
   `idCategorie` int(11) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`idCategorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,9 +38,10 @@ LOCK TABLES `Categorie` WRITE;
 /*!40000 ALTER TABLE `Categorie` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `Categorie` VALUES
+(1,'Cuisines'),
 (2,'Art'),
 (3,'Informatique'),
-(6,'Cuisine');
+(6,'Test');
 /*!40000 ALTER TABLE `Categorie` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -64,7 +65,7 @@ CREATE TABLE `Site` (
   KEY `idUser` (`idUser`),
   CONSTRAINT `Site_ibfk_1` FOREIGN KEY (`idCategorie`) REFERENCES `Categorie` (`idCategorie`),
   CONSTRAINT `Site_ibfk_2` FOREIGN KEY (`idUser`) REFERENCES `Utilisateur` (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,8 +75,6 @@ CREATE TABLE `Site` (
 LOCK TABLES `Site` WRITE;
 /*!40000 ALTER TABLE `Site` DISABLE KEYS */;
 set autocommit=0;
-INSERT INTO `Site` VALUES
-(12,'https://www.google.com/?hl=fr','google','gg',3,3);
 /*!40000 ALTER TABLE `Site` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -89,12 +88,12 @@ DROP TABLE IF EXISTS `Utilisateur`;
 /*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Utilisateur` (
   `idUser` int(11) NOT NULL AUTO_INCREMENT,
-  `url` varchar(255) DEFAULT NULL,
-  `mail` varchar(255) DEFAULT NULL,
-  `mdp` varchar(255) DEFAULT NULL,
+  `url` varchar(50) DEFAULT NULL,
+  `mail` varchar(50) DEFAULT NULL,
+  `mdp` varchar(50) DEFAULT NULL,
   `params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`params`)),
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,7 +104,7 @@ LOCK TABLES `Utilisateur` WRITE;
 /*!40000 ALTER TABLE `Utilisateur` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `Utilisateur` VALUES
-(3,'','test@gmail.com','1234',NULL);
+(1,'','test@gmail.com','1234',NULL);
 /*!40000 ALTER TABLE `Utilisateur` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -119,4 +118,4 @@ commit;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2026-04-22 20:05:40
+-- Dump completed on 2026-04-29 14:58:09

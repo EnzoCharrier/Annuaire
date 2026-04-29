@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.8.0, created on 2026-04-29 12:38:48
+/* Smarty version 5.8.0, created on 2026-04-29 13:38:25
   from 'file:categorie/list.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.8.0',
-  'unifunc' => 'content_69f1fbd8a57f58_17713270',
+  'unifunc' => 'content_69f209d1e4c6e9_44813509',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '46cc7ae55df0c8240e3b3b0c2d84d76517bb0f66' => 
     array (
       0 => 'categorie/list.tpl',
-      1 => 1777465776,
+      1 => 1777469106,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_69f1fbd8a57f58_17713270 (\Smarty\Template $_smarty_tpl) {
+function content_69f209d1e4c6e9_44813509 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\charrier\\Documents\\Annuaire\\Views\\templates\\categorie';
 ?><nav>
         <ul>
@@ -28,7 +28,7 @@ $_smarty_current_dir = 'C:\\Users\\charrier\\Documents\\Annuaire\\Views\\templat
                 <a href="index.php?page=site&action=list"> Mes Sites </a>
            </li>
             <li>
-                <a href="index.php?page=categorie&action=list">Mes Categorie </a>
+                <a href="index.php?page=categorie&action=list">Mes Categories </a>
            </li>
            <li>
                 <a href="index.php?page=auth&action=logout">Deconnexion </a>

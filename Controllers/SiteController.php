@@ -39,7 +39,7 @@ class SiteController {
     }
 
     public function search() {
-        $keyword = trim($_GET['q']);
+        $keyword = $_GET['q'];
         $categoryId = (int)($_GET['idCategorie']);
         return [
             'titre' => 'Recherche de sites',
